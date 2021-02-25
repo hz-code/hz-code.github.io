@@ -3,9 +3,11 @@
   <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1'>
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  
+  <!-- 分类页面 -->
     
-      <meta name="robots" content="noindex,follow">
+      
+        <meta name="robots" content="index,follow">
+      
     
   
   <!-- 渲染优化 -->
@@ -24,7 +26,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- 页面元数据 -->
   
-  <title>Archive: 2021 - Hexo</title>
+  <title>Hexo</title>
   
 
   
@@ -104,7 +106,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -121,7 +123,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
         <a class="title flat-box" target="_self" href='/'>
           
-            <img no-lazy class='logo' src='/img/logo.png' style="border-radius:50%; width:2.5em;height:2.5em;margin-top:5px"/>
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
           
           
           
@@ -142,7 +144,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                     id="home"
                   >
-                  <i class='fas fa-home fa-fw fa-fw'></i>首页
+                  <i class='fas fa-rss fa-fw'></i>博客
                 </a>
                 
               </li>
@@ -190,7 +192,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                     id="archives"
                   >
-                  <i class='fas fa-history fa-fw'></i>归档
+                  <i class='fas fa-archive fa-fw'></i>归档
                 </a>
                 
               </li>
@@ -206,7 +208,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                     id="friends"
                   >
-                  <i class='fas fa-bold fa-fw fa-fw'></i>博客
+                  <i class='fas fa-link fa-fw'></i>友链
                 </a>
                 
               </li>
@@ -256,7 +258,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                     id="home"
                   >
-                  <i class='fas fa-home fa-fw fa-fw'></i>首页
+                  <i class='fas fa-rss fa-fw'></i>博客
                 </a>
                 
               </li>
@@ -304,7 +306,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                     id="archives"
                   >
-                  <i class='fas fa-history fa-fw'></i>归档
+                  <i class='fas fa-archive fa-fw'></i>归档
                 </a>
                 
               </li>
@@ -320,7 +322,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                     id="friends"
                   >
-                  <i class='fas fa-bold fa-fw fa-fw'></i>博客
+                  <i class='fas fa-link fa-fw'></i>友链
                 </a>
                 
               </li>
@@ -355,7 +357,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper  dock' style="display: ;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://p.pstatp.com/origin/1375b00017396c5bd8d25"></div>
           
@@ -396,7 +398,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <a href="/"
               
               
-              id="home">
+              id="v4getting-started">
               <i class='fas fa-home fa-fw fa-fw'></i><p>首页</p>
             </a>
           
@@ -425,14 +427,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
               
               id="archives">
-              <i class='fas fa-heart fa-spin fa-fw fa-fw'></i><p>待定</p>
-            </a>
-          
-            <a target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/"
-              
-              
-              id="https:githubcomvolantis-xhexo-theme-volantis">
-              <i class='fas fa-info-circle fa-fw fa-fw'></i><p>关于</p>
+              <i class='fas fa-user-circle fa-fw fa-fw'></i><p>关于</p>
             </a>
           
         
@@ -441,164 +436,125 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   </div>
 </div>
 
-          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+          <div id="scroll-down" style="display: ;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
         </div>
     
   
   </div>
+<div class="safearea">
+      <div class="body-wrapper" id="pjax-container">
+        
+          <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">false</div> 
+  <div id="pjax-pageTitle"></div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path"></div> 
+  <div id="pjax-comment-placeholder"></div> 
+</div> 
+ 
+ 
+ 
+ 
 
-      <div id="safearea">
-        <div class="body-wrapper" id="pjax-container">
-          
+        
+        
 
-<div class='l_main'>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/hello-world/">
-        Hello World
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/24/hello-world/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
-
+<div class="l_main">
+  
+    
+      <div class="post-wrapper">
+        <article id="cat" class="post article white-box reveal shadow floatable" data-sr-id="96" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);">
+          <h2>所有分类</h2>
+          <div class="all-cats">
+            
+              
+                <a class="" href="/categories/hexo/" data-pjax-state="">
+                  <span><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;hexo</span>
+                  <span class="title">
+                    (2)
+                  </span>
+                </a>
+              
+                <a class=" child" href="/categories/hexo/markdown/" data-pjax-state="">
+                  <span><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;markdown</span>
+                  <span class="title">
+                    (1)
+                  </span>
+                </a>
+              
+                <a class="" href="/categories/linux/" data-pjax-state="">
+                  <span><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;linux</span>
+                  <span class="title">
+                    (20)
+                  </span>
+                </a>
+              
+                <a class="" href="/categories/test/" data-pjax-state="">
+                  <span><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;test</span>
+                  <span class="title">
+                    (2)
+                  </span>
+                </a>
+              
+                <a class="" href="/categories/tools/" data-pjax-state="">
+                  <span><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;tools</span>
+                  <span class="title">
+                    (1)
+                  </span>
+                </a>
+              
+                <a class="" href="/categories/work/" data-pjax-state="">
+                  <span><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;work</span>
+                  <span class="title">
+                    (1)
+                  </span>
+                </a>
+              
+            
           </div>
-        
-      
+          <br>
+          
+        </article>
+      </div>
     
-  </section>
   
-    
-  
-
-
-	
 </div>
-<aside class='l_side'>
+<aside class="l_side">
   
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
+<section class="widget blogger shadow floatable desktop mobile">
+  <div class="content">
     
       
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
+        <a class="avatar flat-box rectangle" href="/about/" data-pjax-state="">
+          <img no-lazy="" src="/img/logo.png">
         </a>
       
     
     
-      <div class='text'>
+      <div class="text">
+        
+          <h2>暂未成功人士</h2>
         
         
+          <p>White and Fat - Full of Hope</p>
+
         
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
         
       </div>
     
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
     
   </div>
 </section>
-
-  
-
-  
-    
-    
-
-  
-
-  
-    
-    
-
-  
 
   
 
@@ -606,79 +562,77 @@ Qu...
 </aside>
 
 
-		  
-		  <!--此文件用来存放一些不方便取值的变量-->
-<!--思路大概是将值藏到重加载的区域内-->
-
-<script>
-  window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
-  pdata.commentPath="";
-  pdata.commentPlaceholder="";
-  // header 这里无论是否开启pjax都需要
-  var l_header=document.getElementById("l_header");
-  
-  l_header.classList.remove("show");
-  
-  
-    // cover
-    var cover_wrapper=document.querySelector('.cover-wrapper');
-    
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
-    
-  
-</script>
-
-        </div>
-        
-  
+      </div>
+       
   <footer class="footer clearfix">
     <br><br>
-    
-      
-        <div class="aplayer-container">
-          
-
-
-        </div>
-      
     
       
         <br>
         <div class="social-wrapper">
           
             
-          
+              <a href="https://photo.tedgao.com" class="social fas fas fa-images flat-btn" target="_blank" rel="external nofollow noopener noreferrer" data-pjax-state="">
+                
+              </a>
             
           
+            
+              <a href="mailto:loveyurippe@vip.qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer" data-pjax-state="">
+                
+              </a>
+            
+          
+            
+              <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=4526534&amp;site=qq&amp;menu=yes" class="social fab fa-qq flat-btn" target="_blank" rel="external nofollow noopener noreferrer" data-pjax-state="">
+                
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=57472601" class="social fas fa-headphones-alt flat-btn" target="_blank" rel="external nofollow noopener noreferrer" data-pjax-state="">
+                
+              </a>
             
           
         </div>
       
     
       
-        <div><p>Blog content follows the <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" data-pjax-state="">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
 </div>
       
     
       
+        <span id="timeDate"> 网站已经运行 502 天 </span><span id="times">19 时 56 分 22 秒 </span>
+        <script>
+                var now = new Date();
+                function createtime() {
+                var grt= new Date("2/20/2021 00:00:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+                now.setTime(now.getTime()+250);
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+                document.getElementById("timeDate").innerHTML = " 网站已经运行 "+dnum+" 天 ";
+                document.getElementById("times").innerHTML = hnum + " 时 " + mnum + " 分 " + snum + " 秒 ";
+                }
+                setInterval("createtime()",250);
+         </script>
+      
+    
+      
         
-          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+          <div><p><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/" data-pjax-state="">京ICP备20030624号</a> | 京公网安备 11011502004246号</p>
 </div>
         
       
     
       
-        Use
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1" target="_blank" class="codename">Volantis</a>
-        as theme
-      
-    
-      
-        <div class='copyright'>
-        <p><a href="/">Copyright © 2017-2021</a></p>
+        <div class="copyright">
+        <p><a target="_blank" rel="noopener" href="https://www.tedgao.com/" data-pjax-state="">Copyright © 2019-2020 Ted.Gao</a></p>
 
         </div>
       
@@ -686,10 +640,8 @@ Qu...
   </footer>
 
 
-        <a id="s-top" class="fas fa-arrow-up fa-fw" href="javascript:void(0)"></a>
-      </div>
+      <a class="s-top fas fa-arrow-up fa-fw" href="javascript:void(0)"></a>
     </div>
-    <div>
       <script>
 /************这个文件存放不需要重载的全局变量和全局函数*********/
 window.volantis={};
