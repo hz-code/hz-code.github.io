@@ -3273,6 +3273,7 @@ footer.footer .copyright p {
 .md .img-wrap .image-caption:empty {
   display: none;
 }
+@import url("https://fonts.googleapis.com/css?family=Khula:700");
 #safearea {
   margin: 16px 16px 0;
 }
@@ -3713,6 +3714,12 @@ img.lazyload:not(.placeholder):not(.loaded) {
 }
 img.lazyload:not(.placeholder).loaded {
   filter: none;
+}
+.daytext {
+  margin-top: 1em;
+}
+.typed-cursor {
+  color: #000;
 }
 .md >p {
   padding-top: 4px;
