@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>深入理解浏览器运行机制</title>
+      <link href="2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/"/>
+      <url>2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</url>
+      
+        <content type="html"><![CDATA[<div background="#000">    <center>    <font size="70">深入理解浏览器的运行机制</font></center></div><h2 id="一-进程和线程"><a href="#一-进程和线程" class="headerlink" title="一.进程和线程"></a>一.进程和线程</h2><p>&emsp;&emsp;计算机的核心是CPU，它承担了所有的计算任务。我们假设CPU是一个时刻在运行的工厂，假设工厂的电力有限（CPU的计算能力有限），一次只能供给一个车间（单个CPU一次只能运行一个任务）。<br>&emsp;&emsp;进程就像工厂的车间，它代表CPU所能处理的单个任务。任一时刻，CPU总是运行一个进程，同时其他进程处于非运行状态;<br>&emsp;&emsp;而线程是工厂车间中的工人，可能只有一个，也可能有很多个，他们协同完成工作。车间的空间是工人们共享的，这意味着一个进程下的线程共享该进程的内存空间。</p><hr><p><font color="red">注: 一个软件不等于一个进程，一个软件可能包含有多个户向独立的进程；<br/>      进程是系统资源分配的最小单位(即系统以进程为最小单位分配内存空间，同时进程是能独立运行的最小单位）；<br/>      线程是系统调度的最小单位（即系统以进程为单位分配CPUT中的核）；<br/>      进程之间也能相互通信，但代价较大。</font></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分类A </category>
+          
+          <category> 分类B </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PS3 </tag>
+            
+            <tag> Games </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>article</title>
+      <link href="2021/02/26/article/"/>
+      <url>2021/02/26/article/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="2021/02/24/hello-world/"/>
+      <url>2021/02/24/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>

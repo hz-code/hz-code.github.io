@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -24,7 +22,9 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- 页面元数据 -->
   
-  <title>Archive - 暂未成功人士</title>
+  <title>深入理解浏览器运行机制 - 暂未成功人士</title>
+  
+    <meta name="keywords" content="PS3,Games">
   
 
   
@@ -104,7 +104,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -434,7 +434,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://p.pstatp.com/origin/1375b00017396c5bd8d25"></div>
           
@@ -524,63 +524,234 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-	
-	  <article id="arc" class="post article white-box reveal shadow">
-			
-			
-				
-				
-					
-						
-						<h2>2021</h2>
-					
-						<div class='timenode'>
-								<a class="meta" href="/2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
-									<time>02-26</time>
-									
-										深入理解浏览器运行机制
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2021/02/26/article/">
-									<time>02-26</time>
-									
-										article
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2021/02/24/hello-world/">
-									<time>02-24</time>
-									
-										Hello World
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-	  </article>
-	
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        深入理解浏览器运行机制
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>暂未成功人士</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E5%88%86%E7%B1%BBA/">分类A</a><span class="sep"></span><a class="category-link" href="/categories/%E5%88%86%E7%B1%BBA/%E5%88%86%E7%B1%BBB/">分类B</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Feb 26, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="深入理解浏览器运行机制" data-path="/2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  
+  <div background="#000">
+    <center>
+    <font size="70">深入理解浏览器的运行机制</font></center>
+</div>
+
+
+
+<h2 id="一-进程和线程"><a href="#一-进程和线程" class="headerlink" title="一.进程和线程"></a>一.进程和线程</h2><p>&emsp;&emsp;计算机的核心是CPU，它承担了所有的计算任务。我们假设CPU是一个时刻在运行的工厂，假设工厂的电力有限（CPU的计算能力有限），一次只能供给一个车间（单个CPU一次只能运行一个任务）。<br>&emsp;&emsp;进程就像工厂的车间，它代表CPU所能处理的单个任务。任一时刻，CPU总是运行一个进程，同时其他进程处于非运行状态;<br>&emsp;&emsp;而线程是工厂车间中的工人，可能只有一个，也可能有很多个，他们协同完成工作。车间的空间是工人们共享的，这意味着一个进程下的线程共享该进程的内存空间。</p>
+<hr>
+<p><font color="red">注: 一个软件不等于一个进程，一个软件可能包含有多个户向独立的进程；<br/>      进程是系统资源分配的最小单位(即系统以进程为最小单位分配内存空间，同时进程是能独立运行的最小单位）；<br/>      线程是系统调度的最小单位（即系统以进程为单位分配CPUT中的核）；<br/>      进程之间也能相互通信，但代价较大。</font></p>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>如有错误，感谢指正</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://hz-code.github.io/2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/>https://hz-code.github.io/2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-26T21:07:09+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Feb 26, 2021</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/PS3/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>PS3</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Games/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Games</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hz-code.github.io/2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/&title=深入理解浏览器运行机制 - 暂未成功人士&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hz-code.github.io/2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/&title=深入理解浏览器运行机制 - 暂未成功人士&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hz-code.github.io/2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/&title=深入理解浏览器运行机制 - 暂未成功人士&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a>
+          <div class='target'>
+            <img src="data:image/png;base64,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">
+          </div>
+        </div>
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2021/02/26/article/'>
+          <p class='title'>article<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'></p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="minivaline_container">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -827,27 +998,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
 		  
 		  <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="深入理解浏览器运行机制";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>
