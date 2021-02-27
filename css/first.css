@@ -775,6 +775,7 @@ a.result.search-result-fix,
 }
 .cover-wrapper.search .bottom .menu {
   margin-top: 16px;
+  z-index:2;
 }
 .cover-wrapper.search .bottom .menu .list-h a {
   white-space: nowrap;
