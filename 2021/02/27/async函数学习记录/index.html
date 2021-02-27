@@ -22,9 +22,9 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- 页面元数据 -->
   
-  <title>深入理解浏览器运行机制 - 暂未成功人士</title>
+  <title>async函数学习记录 - 暂未成功人士</title>
   
-    <meta name="keywords" content="前端优化,浏览器">
+    <meta name="keywords" content="ES6">
   
 
   
@@ -531,7 +531,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class='headimg-div'>
       <a class='headimg-a'>
-        <img class='headimg' src='https://images.unsplash.com/photo-1537819191377-d3305ffddce4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1308&q=80'/>
+        <img class='headimg' src='https://images.unsplash.com/photo-1614186981972-8aff75a55306?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80'/>
       </a>
     </div>
   
@@ -540,7 +540,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        深入理解浏览器运行机制
+        async函数学习记录
       </h1>
       <div class='new-meta-box'>
         
@@ -560,7 +560,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class='new-meta-item category'>
     <a class='notlink'>
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
+      <a class="category-link" href="/categories/ES6/">ES6</a>
     </a>
   </div>
 
@@ -571,7 +571,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Feb 26, 2021</p>
+    <p>发布于：Feb 27, 2021</p>
   </a>
 </div>
 
@@ -582,7 +582,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="深入理解浏览器运行机制" data-path="/2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
+      <div id="lc-pv" data-title="async函数学习记录" data-path="/2021/02/27/async%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -600,33 +600,69 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h2 id="一-进程和线程"><a href="#一-进程和线程" class="headerlink" title="一. 进程和线程"></a>一. 进程和线程</h2><p>​        计算机的核心是CPU，它承担了所有的计算任务。我们假设CPU是一个时刻在运行的工厂，假设工厂的电力有限（CPU的计算能力有限），一次只能供给一个车间（单个CPU一次只能运行一个任务）。</p>
-<p>​        进程就像工厂的车间，它代表CPU所能处理的单个任务。任一时刻，CPU总是运行一个进程，同时其他进程处于非运行状态;</p>
-<p>​        而线程是工厂车间中的工人，可能只有一个，也可能有很多个，他们协同完成工作。车间的空间是工人们共享的，这意味着一个进程下的线程共享该进程的内存空间。</p>
-<hr>
-<p><font color="red">注:<br>&emsp;&emsp; 一个软件不等于一个进程，一个软件可能包含有多个户向独立的进程；<br/><br>&emsp;&emsp;进程是系统资源分配的最小单位(即系统以进程为最小单位分配内存空间，同时进程是能独立运行的最小单位）；<br/><br>&emsp;&emsp;线程是系统调度的最小单位（即系统以进程为单位分配CPUT中的核）；<br/><br>&emsp;&emsp;进程之间也能相互通信，但代价较大。</font></p>
-<h2 id="二-浏览器中的进程"><a href="#二-浏览器中的进程" class="headerlink" title="二. 浏览器中的进程"></a>二. 浏览器中的进程</h2><p><img src="/img/1.png" class="lazyload" data-srcset="/img/1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<h3 id="2-1-浏览器主进程（Browser进程）"><a href="#2-1-浏览器主进程（Browser进程）" class="headerlink" title="2.1 浏览器主进程（Browser进程）"></a><strong>2.1 浏览器主进程（Browser进程）</strong></h3><p>&emsp;&emsp;浏览器的主进程只有一个，负责协调、主控。</p>
-<ul>
-<li>&emsp;负责浏览器界面显示，与用户交互，如前进，后退等；</li>
-<li>&emsp;负责各个页面的管理，创建和销毁其他进程；</li>
-<li>&emsp;负责将渲染进程得到的内存中的 Bitmap，绘制到用户界面上；</li>
-<li>&emsp;负责网络资源的管理，下载等。</li>
-</ul>
-<h3 id="2-2-第三方插件进程"><a href="#2-2-第三方插件进程" class="headerlink" title="2.2 第三方插件进程"></a><strong>2.2 第三方插件进程</strong></h3><p>&emsp;&emsp;每种类型的插件对应一个进程，仅当使用该插件时才创建。</p>
-<h3 id="2-3-GPU进程"><a href="#2-3-GPU进程" class="headerlink" title="2.3 GPU进程"></a><strong>2.3 GPU进程</strong></h3><p>&emsp;&emsp;只有一个，负责3D绘制，只有当该页面使用了硬件加速才会使用它，来渲染（显示）页面。否则的话，不使用这个进程，而是用Browser进程来渲染（显示）页面。</p>
-<h3 id="2-4-浏览器渲染进程（又称浏览器内核，Renderer-进程，内部是多线程的）"><a href="#2-4-浏览器渲染进程（又称浏览器内核，Renderer-进程，内部是多线程的）" class="headerlink" title="2.4 浏览器渲染进程（又称浏览器内核，Renderer 进程，内部是多线程的）"></a><strong>2.4 浏览器渲染进程（又称浏览器内核，Renderer 进程，内部是多线程的）</strong></h3><p>&emsp;&emsp;负责脚本执行，位图绘制，事件触发，任务队列轮询等 。</p>
-<h4 id="2-4-1-GUI-渲染线程"><a href="#2-4-1-GUI-渲染线程" class="headerlink" title="2.4.1 GUI 渲染线程"></a><strong>2.4.1 GUI 渲染线程</strong></h4><p>&emsp;&emsp;负责渲染浏览器界面，解析 HTML，CSS，构建 DOM 树和 RenderObject 树，布局和绘制等。当界面需要重绘（Repaint）或由于某种操作引发回流(reflow)时，该线程就会执行<br>&emsp;&emsp;<font color="red">注：GUI 渲染线程与 JS 引擎线程是互斥的，当 JS 引擎执行时 GUI 线程会被挂起（相当于被冻结了），GUI 更新会被保存在一个队列中等到 JS 引擎空闲时立即被执行。为什么互斥：由于 JS 是可以操作 DOM 的，如果同时修改元素属性并同时渲染界面(即 JS 线程和 UI 线程同时运行)， 那么渲染线程前后获得的元素就可能不一致了（简单说就是 js 修改 dom 后没有重新渲染成功）</font></p>
-<h4 id="2-4-2-JS-引擎线程"><a href="#2-4-2-JS-引擎线程" class="headerlink" title="2.4.2 JS 引擎线程"></a><strong>2.4.2 JS 引擎线程</strong></h4><p>&emsp;&emsp;也称为 JS 内核，负责处理 Javascript 脚本程序。JS 引擎线程负责解析 Javascript 脚本，运行代码。JS 引擎一直等待着任务队列中任务的到来，然后加以处理，一个 Tab 页（renderer 进程）中无论什么时候都只有一个 JS 线程在运行 JS 程序<br>&emsp;&emsp;<font color="red">注： GUI 渲染线程与 JS 引擎线程是互斥的，所以如果 JS 执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞。</font></p>
-<h4 id="2-4-3-事件触发线程"><a href="#2-4-3-事件触发线程" class="headerlink" title="2.4.3 事件触发线程"></a><strong>2.4.3 事件触发线程</strong></h4><p>&emsp;&emsp;归属于浏览器而不是 JS 引擎，用来控制事件循环（可以理解，JS 引擎自己都忙不过来，需要浏览器另开线程协助）。当 JS 引擎执行代码块如 setTimeOut 时（也可来自浏览器内核的其他线程,如鼠标点击、AJAX 异步请求等），会将对应任务添加到事件线程中，当对应的事件符合触发条件被触发时，该线程会把事件添加到待处理队列的队尾，等待 JS 引擎的处理。<br>&emsp;&emsp;<font color="red">注：由于 JS 的单线程关系，所以这些待处理队列中的事件都得排队等待 JS 引擎处理（当 JS 引擎空闲时才会去执行）。</font></p>
-<h4 id="2-4-4-定时触发器线程"><a href="#2-4-4-定时触发器线程" class="headerlink" title="2.4.4 定时触发器线程"></a><strong>2.4.4 定时触发器线程</strong></h4><p>&emsp;&emsp;setInterval 与 setTimeout(这些 API 却不是引擎提供的而是浏览器提供的 Web API，比如说 DOM、AJAX、setTimeout) 所在线程浏览器定时计数器并不是由JavaScript 引擎计数的，因为 JavaScript 引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确。因此通过单独线程来计时并触发定时（计时完毕后，添加到事件队列中，等待 JS 引擎空闲后执行）。<br>&emsp;&emsp;<font color="red">注：W3C 在 HTML 标准中规定，规定要求 setTimeout 中低于 4ms 的时间间隔算为 4ms。</font></p>
-<h4 id="2-4-5-异步-http-请求线程"><a href="#2-4-5-异步-http-请求线程" class="headerlink" title="2.4.5 异步 http 请求线程"></a><strong>2.4.5 异步 http 请求线程</strong></h4><p>&emsp;&emsp;在 XMLHttpRequest 在连接后是通过浏览器新开一个线程请求。当检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件，将这个回调再放入事件队列中，再由 JavaScript 引擎执行。</p>
-<h2 id="三-浏览器的运行机制"><a href="#三-浏览器的运行机制" class="headerlink" title="三. 浏览器的运行机制"></a><strong>三. 浏览器的运行机制</strong></h2><ol>
-<li>构建DOM树（parse）：渲染引擎解析HTML文档，首先将标签转换成DOM树中的DOM node（包括js生成的标签）<strong>生成内容树</strong>（Content Tree/DOM Tree）；</li>
-<li>构建渲染树（construct）：解析对应的CSS样式文件信息（包括js生成的样式和外部css文件），而这些文件信息以及HTML中可见的指令（如<b></b>）<strong>，构建渲染树</strong>（Rendering Tree/Frame Tree）；render tree中每个NODE都有自己的style，而且render tree不包含隐藏的节点(比如display:none的节点，还有head节点)，因为这些节点不会用于呈现</li>
-<li>布局渲染树（reflow/layout）：从根节点递归调用，计算每一个元素的大小、位置等，给出每个节点所应该在屏幕上出现的精确坐标；</li>
-<li>绘制渲染树（paint/repaint）：遍历渲染树，使用UI 层来绘制每个节点。</li>
-</ol>
+  <h2 id="一-Generator函数"><a href="#一-Generator函数" class="headerlink" title="一. Generator函数"></a><strong>一. Generator函数</strong></h2><p>Generator函数从语法上可以理解成一个状态机，它的内部封装了多个状态。当执行Generator函数时候会返回一个遍历器对象，返回的遍历器对象可以一次遍历Generator函数内部的每一个状态。</p>
+<p>形式上，Generator函数只是一个普通函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">testGenerator</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">&#x27;I am&#x27;</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">&#x27;Generator&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;ending&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test = testGenerator();</span><br></pre></td></tr></table></figure>
+
+<p>它有两个特征，一是，function关键字与函数名之间有一个<code>*</code>号；二是，函数体内部使用<code>yield</code>表达式定义不同的内部状态。上述代码定义了一个Generator函数<code>testGenerator</code>，在它的内部有两个<code>yield</code>表达式，同时该函数有三个状态：I am，Generator和return语句。</p>
+<p>调用Generator函数后，该函数不执行，返回的也不是函数运行结果，而是一个指向内部状态的指针对象（也就是遍历器对象）。</p>
+<p>调用Generator函数的下一步是必须调用遍历器的<code>next</code>发明方法，使得指针移向下一个状态。每次调用<code>next</code>方法，内部指针就从函数头部或上一次停下来的地方开始执行，直到遇到下一个<code>yield</code>表达式或<code>return</code>语句。简单概括，Generator函数是分段执行的，<code>yield</code>表达式是暂停执行的标记，<code>next</code>方法可以恢复执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">test.next()</span><br><span class="line"><span class="comment">// &#123; value: &#x27;I am&#x27;, done: false &#125;</span></span><br><span class="line"></span><br><span class="line">test.next()</span><br><span class="line"><span class="comment">// &#123; value: &#x27;Generator&#x27;, done: false &#125;</span></span><br><span class="line"></span><br><span class="line">test.next()</span><br><span class="line"><span class="comment">// &#123; value: &#x27;ending&#x27;, done: true &#125;</span></span><br><span class="line"></span><br><span class="line">test.next()</span><br><span class="line"><span class="comment">// &#123; value: undefined, done: true &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>上述代码一共调用了四次next()方法。</p>
+<p><font color="orange">注：<code>yield</code>只能用在Generator函数中；<code>yield</code>表达式如果用在另一个表达式之中，必须放在圆括号内</font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">demo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Hello&#x27;</span> + (<span class="keyword">yield</span>)); <span class="comment">// OK</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Hello&#x27;</span> + (<span class="keyword">yield</span> <span class="number">123</span>)); <span class="comment">// OK</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><font color="orange"><code>yield</code>表达式用作函数参数或放在赋值表达式右边，可以不加括号</font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">demo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  foo(<span class="keyword">yield</span> <span class="string">&#x27;a&#x27;</span>, <span class="keyword">yield</span> <span class="string">&#x27;b&#x27;</span>); <span class="comment">// OK</span></span><br><span class="line">  <span class="keyword">let</span> input = <span class="keyword">yield</span>; <span class="comment">// OK</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><font color="orange"><code>next</code>方法可以带一个参数，该参数就会被当作上一个<code>yield</code>表达式的返回值</font></p>
+<h3 id="1-1-Generator-prototype-throw"><a href="#1-1-Generator-prototype-throw" class="headerlink" title="1.1 Generator.prototype.throw()"></a><strong>1.1 Generator.prototype.throw()</strong></h3><p>Generator 函数返回的遍历器对象，都有一个<code>throw</code>方法，可以在函数体外抛出错误，然后在 Generator 函数体内捕获。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">yield</span>;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;内部捕获&#x27;</span>, e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> i = g();</span><br><span class="line">i.next();</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  i.throw(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">  i.throw(<span class="string">&#x27;b&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;外部捕获&#x27;</span>, e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 内部捕获 a</span></span><br><span class="line"><span class="comment">// 外部捕获 b</span></span><br></pre></td></tr></table></figure>
+
+<p><font color="orange">不要混淆遍历器对象的<code>throw</code>方法和全局的<code>throw</code>命令。<code>throw</code>命令抛出的错误只能被函数体外的<code>catch</code>语句捕获。</font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">yield</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      <span class="keyword">if</span> (e != <span class="string">&#x27;a&#x27;</span>) <span class="keyword">throw</span> e;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;内部捕获&#x27;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> i = g();</span><br><span class="line">i.next();</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;b&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;外部捕获&#x27;</span>, e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 外部捕获 [Error: a]</span></span><br></pre></td></tr></table></figure>
+
+<p><font color="orange">如果Generator函数内部没用部署<code>try...catch</code>代码块，<code>throw</code>方法抛出的错误，将被外部<code>try...catch</code>代码块捕获</font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">yield</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;内部捕获&#x27;</span>, e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> i = g();</span><br><span class="line">i.next();</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  i.throw(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">  i.throw(<span class="string">&#x27;b&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;外部捕获&#x27;</span>, e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 外部捕获 a</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-Generator-prototype-return"><a href="#1-2-Generator-prototype-return" class="headerlink" title="1.2 Generator.prototype.return()"></a><strong>1.2 Generator.prototype.return()</strong></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> g = gen();</span><br><span class="line"></span><br><span class="line">g.next()        <span class="comment">// &#123; value: 1, done: false &#125;</span></span><br><span class="line">g.return(<span class="string">&#x27;foo&#x27;</span>) <span class="comment">// &#123; value: &quot;foo&quot;, done: true &#125;</span></span><br><span class="line">g.next()        <span class="comment">// &#123; value: undefined, done: true &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，遍历器对象<code>g</code>调用<code>return()</code>方法后，返回值的<code>value</code>属性就是<code>return()</code>方法的参数<code>foo</code>。并且，Generator 函数的遍历就终止了，返回值的<code>done</code>属性为<code>true</code>，以后再调用<code>next()</code>方法，<code>done</code>属性总是返回<code>true</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> g = gen();</span><br><span class="line"></span><br><span class="line">g.next()        <span class="comment">// &#123; value: 1, done: false &#125;</span></span><br><span class="line">g.return() <span class="comment">// &#123; value: undefined, done: true &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果<code>return()</code>方法调用时，不提供参数，则返回值的<code>value</code>属性为<code>undefined</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">numbers</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">5</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">6</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> g = numbers();</span><br><span class="line">g.next() <span class="comment">// &#123; value: 1, done: false &#125;</span></span><br><span class="line">g.next() <span class="comment">// &#123; value: 2, done: false &#125;</span></span><br><span class="line">g.return(<span class="number">7</span>) <span class="comment">// &#123; value: 4, done: false &#125;</span></span><br><span class="line">g.next() <span class="comment">// &#123; value: 5, done: false &#125;</span></span><br><span class="line">g.next() <span class="comment">// &#123; value: 7, done: true &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果 Generator 函数内部有<code>try...finally</code>代码块，且正在执行<code>try</code>代码块，那么<code>return()</code>方法会导致立刻进入<code>finally</code>代码块，执行完以后，整个函数才会结束。</p>
+<p>上面代码中，调用<code>return()</code>方法后，就开始执行<code>finally</code>代码块，不执行<code>try</code>里面剩下的代码了，然后等到<code>finally</code>代码块执行完，再返回<code>return()</code>方法指定的返回值。</p>
+<h2 id="二-async函数"><a href="#二-async函数" class="headerlink" title="二. async函数"></a><strong>二. async函数</strong></h2><p><code>async</code>函数使得异步操作变得更加方便。简单概括async函数，它就说Generator函数的语法糖。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> readFile = <span class="function"><span class="keyword">function</span> (<span class="params">fileName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    fs.readFile(fileName, <span class="function"><span class="keyword">function</span>(<span class="params">error, data</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (error) <span class="keyword">return</span> reject(error);</span><br><span class="line">      resolve(data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> gen = <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> f1 = <span class="keyword">yield</span> readFile(<span class="string">&#x27;/etc/test1&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> f2 = <span class="keyword">yield</span> readFile(<span class="string">&#x27;/etc/test2&#x27;</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(f1.toString());</span><br><span class="line">  <span class="built_in">console</span>.log(f2.toString());</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码的函数<code>gen</code>可以写成<code>async</code>函数，就是下面这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> asyncReadFile = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> f1 = <span class="keyword">await</span> readFile(<span class="string">&#x27;/etc/test1&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> f2 = <span class="keyword">await</span> readFile(<span class="string">&#x27;/etc/test2&#x27;</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(f1.toString());</span><br><span class="line">  <span class="built_in">console</span>.log(f2.toString());</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>通过比较发现，<code>async</code>函数就是将 Generator 函数的星号（<code>*</code>）替换成<code>async</code>，将<code>yield</code>替换成<code>await</code>。</p>
+<p><code>async</code>函数对 Generator 函数的改进，体现在以下四点。</p>
+<p>（1）内置执行器。</p>
+<p>Generator 函数的执行必须靠执行器，而<code>async</code>函数自带执行器。也就是说，<code>async</code>函数的执行，与普通函数一模一样，只要一行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asyncReadFile();</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码调用了<code>test</code>函数，然后它就会自动执行，输出最后结果。这完全不像 Generator 函数，需要调用<code>next</code>方法，才能真正执行，得到最后结果。</p>
+<p>（2）更好的语义。</p>
+<p><code>async</code>和<code>await</code>，比起星号和<code>yield</code>，语义更清楚了。<code>async</code>表示函数里有异步操作，<code>await</code>表示紧跟在后面的表达式需要等待结果。</p>
+<p>（3）更广的适用性。</p>
+<p><code>co</code>模块约定，<code>yield</code>命令后面只能是 Thunk 函数或 Promise 对象，而<code>async</code>函数的<code>await</code>命令后面，可以是 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时会自动转成立即 resolved 的 Promise 对象）。</p>
+<p>（4）返回值是 Promise。</p>
+<p><code>async</code>函数的返回值是 Promise 对象，这比 Generator 函数的返回值是 Iterator 对象方便多了。你可以用<code>then</code>方法指定下一步的操作。</p>
+<p>进一步说，<code>async</code>函数完全可以看作多个异步操作，包装成的一个 Promise 对象，而<code>await</code>命令就是内部<code>then</code>命令的语法糖。</p>
+<h2 id="三-async函数的实现原理"><a href="#三-async函数的实现原理" class="headerlink" title="三. async函数的实现原理"></a><strong>三. async函数的实现原理</strong></h2><p>async 函数的实现原理，就是将 Generator 函数和自动执行器，包装在一个函数里。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">args</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> spawn(<span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所有的<code>async</code>函数都可以写成上面的第二种形式，其中的<code>spawn</code>函数就是自动执行器。</p>
+<p><code>spawn</code>函数的实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">spawn</span>(<span class="params">genF</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> gen = genF();</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params">nextF</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">let</span> next;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        next = nextF();</span><br><span class="line">      &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">        <span class="keyword">return</span> reject(e);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(next.done) &#123;</span><br><span class="line">        <span class="keyword">return</span> resolve(next.value);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">Promise</span>.resolve(next.value).then(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">        step(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> gen.next(v); &#125;);</span><br><span class="line">      &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        step(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> gen.throw(e); &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    step(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> gen.next(<span class="literal">undefined</span>); &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
   
   
@@ -644,7 +680,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接是：<a href=https://hz-code.github.io/2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/>https://hz-code.github.io/2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</a></p>
+                <p>本文永久链接是：<a href=https://hz-code.github.io/2021/02/27/async%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/>https://hz-code.github.io/2021/02/27/async%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</a></p>
               
             
           </blockquote>
@@ -661,7 +697,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-27T10:39:43+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-27T17:13:56+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Feb 27, 2021</p>
@@ -673,7 +709,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>前端优化</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>浏览器</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ES6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>ES6</p></a></div>
 
 
         
@@ -686,7 +722,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hz-code.github.io/2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/&title=深入理解浏览器运行机制 - 暂未成功人士&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hz-code.github.io/2021/02/27/async%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/&title=async函数学习记录 - 暂未成功人士&summary="
           
           >
           
@@ -698,7 +734,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hz-code.github.io/2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/&title=深入理解浏览器运行机制 - 暂未成功人士&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hz-code.github.io/2021/02/27/async%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/&title=async函数学习记录 - 暂未成功人士&summary="
           
           >
           
@@ -710,7 +746,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hz-code.github.io/2021/02/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/&title=深入理解浏览器运行机制 - 暂未成功人士&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hz-code.github.io/2021/02/27/async%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/&title=async函数学习记录 - 暂未成功人士&summary="
           
           >
           
@@ -724,7 +760,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class='hoverbox'>
           <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a>
           <div class='target'>
-            <img src="data:image/png;base64,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">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXgAAAF4CAAAAAB79r16AAAFKklEQVR42u3aQXLcMAwEwP3/p517XI6AAbDZSpo32zJFNnSZAl5f1l9ZLwTgwVvgwVvgwVsL8K9w/f7/P+339PvqPj/9X3f/dN81L/DgwYMHDx48ePDgF+HLAaAI93TwKsy0MGnB0v0e7w8ePHjw4MGDBw8e/AF8F6B7wekFrgJSes/2BwMePHjw4MGDBw8e/AfAp42QdJ8u2HWwAg8ePHjw4MGDBw/+X4JPf64GoulAUvc94MGDBw8ePHjw4MF/Mnx7QKcIMQWvBp3ufboOYy/w4MGDBw8ePHjw4Bfh08Dyv/4ce4EHDx48ePDgwYMHvwA/XU8H2wpIW++vDi5dLfDgwYMHDx48ePDgN+CnF6sGq24ht1b33NPzrHWgwIMHDx48ePDgwYP/A3w1UFQDUbdgWzDTc04bHuUPGTx48ODBgwcPHjz4BfitxsG7gky3sdINONMg9Xhe8ODBgwcPHjx48OAX4NNBom6Qeb1pbTVy0vuNJ8nAgwcPHjx48ODBg1+ETy86bZhsBaXtgay0EODBgwcPHjx48ODBb8JPg0i3cZI2YlLIrUKPAx148ODBgwcPHjx48IfwVaj0+SnIdkDqnusrXODBgwcPHjx48ODBX8J3GyVd8Clo9zxpw2fa+AAPHjx48ODBgwcP/gK+C50OLE0vNA1Y00GotMDf3gcePHjw4MGDBw8e/AL8dUCq7pO+5ypobRX2MbmCBw8ePHjw4MGDBx/Ab238aq6v4UoB00KuBSrw4MGDBw8ePHjw4BfhuwHoqmFR3T9tzEwD1/g58ODBgwcPHjx48ODfCD8NSGnjpPu+qw9gem/w4MGDBw8ePHjw4C/grwJIOjCUvn/6AUzv//g8ePDgwYMHDx48ePAL8ClM9+JbF7lu2HQbHN0PDzx48ODBgwcPHjz4Dfjqxt3Bo+rz242K6YDUdN/H+4AHDx48ePDgwYMHfwBfDUZXDYX0HGmDZRoQ1wIUePDgwYMHDx48ePCLjZDrhkI3wE2DTxeq+oGU3w8ePHjw4MGDBw8e/AL8tIGQHqz6fFq47vnSD6D6QYAHDx48ePDgwYMHfwE/HTSaNhiu4NJCVwNSuyEDHjx48ODBgwcPHvwh/DbstLBTmKuGT/sDAQ8ePHjw4MGDBw9+Ab57kbRhkTZMqoFl2ri5aoT8GKDAgwcPHjx48ODBgz+AT4NDevCtQLR1nrRg4wAFHjx48ODBgwcPHnwDPm10pAefPpfuexWUygUHDx48ePDgwYMHD34Bvgo+bUSkDYS0gZE2braC2WMjBDx48ODBgwcPHjz4AXwXrnrgKthVYacFmRYGPHjw4MGDBw8ePPh3wqeFSANGWuDtBko6gLU+SQYePHjw4MGDBw8e/MJ8fBqU0oZBWqjths7ZhwQePHjw4MGDBw8e/AJ8OjA0bYykg01TwKuBq3IwAw8ePHjw4MGDBw9+AX660gGjaoG3Bqe2gts0eIIHDx48ePDgwYMHvwE/DSpbv08D3HZw2/5/8ODBgwcPHjx48OAv4dPAVA0U0+fSAJXec/v94MGDBw8ePHjw4MFfwlcDUzdQdAeOtoJdtSBbA1aP+4IHDx48ePDgwYMH/wHw3YtNGyfbBZk2ZrqBDTx48ODBgwcPHjz4T4LvwqWDS9eF32q4gAcPHjx48ODBgwf/TvirgaYp2DTYVP+enrvc6AEPHjx48ODBgwcPfhF+2lioHvhdjY2t904/yG/nAw8ePHjw4MGDBw9+Ad567wIPHrwFHrwFHrw1WL8AEocq7IkUfuQAAAAASUVORK5CYII=">
           </div>
         </div>
       
@@ -745,6 +781,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
 
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/'>
+          <p class='title'>重绘和回流<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>一. 重绘和回流的概念&emsp;&emsp;重绘（repaint）：从名字来看，重绘 = 重新绘制（绘画 + 上色） 。当盒子的位置、大小以及其他属性，例如颜色、字体大小等都确定下来之后，浏览...</p>
+        </a>
+      
+    </div>
   
 </article>
 
@@ -831,6 +877,29 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-Generator%E5%87%BD%E6%95%B0"><span class="toc-text">一. Generator函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Generator-prototype-throw"><span class="toc-text">1.1 Generator.prototype.throw()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Generator-prototype-return"><span class="toc-text">1.2 Generator.prototype.return()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-async%E5%87%BD%E6%95%B0"><span class="toc-text">二. async函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-async%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-text">三. async函数的实现原理</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+  
+    
+    
   
 
   <section class="widget category shadow desktop">
@@ -846,9 +915,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <ul class="entry navigation">
         
           <li><a class="flat-box"
+            title="/categories/ES6/" href="/categories/ES6/"
+            id="categoriesES6"
+            ><div class='name'>ES6</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/"
             id="categoriesE5898DE7ABAFE4BC98E58C96"
-            ><div class='name'>前端优化</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>前端优化</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/html-css/" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/html-css/"
+            id="categoriesE5898DE7ABAFE4BC98E58C96html-css"
+            ><div class='name'>html/css</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>
@@ -872,7 +951,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-      <a href="/tags/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/" style="font-size: 14px; color: #999">前端优化</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 14px; color: #999">浏览器</a>
+      <a href="/tags/ES6/" style="font-size: 14px; color: #999">ES6</a> <a href="/tags/html-css/" style="font-size: 14px; color: #999">html/css</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/" style="font-size: 24px; color: #555">前端优化</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 24px; color: #555">浏览器</a>
     </div>
   </section>
 
@@ -897,7 +976,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <div class="webinfo-item">
           <div>文章数目：</div>
-          <div>1 篇</div>
+          <div>3 篇</div>
         </div>
       
 
@@ -940,7 +1019,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Sat Feb 27 2021 10:58:28 GMT+0800 (中国标准时间)</div>
+            <div id="last-update" style="display: none;">Sat Feb 27 2021 17:15:48 GMT+0800 (中国标准时间)</div>
             <div id="last-update-show">2021-02-27 日</div>
           
         </div>
@@ -1014,7 +1093,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="深入理解浏览器运行机制";
+  pdata.postTitle="async函数学习记录";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要

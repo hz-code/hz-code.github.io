@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -24,7 +22,9 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- 页面元数据 -->
   
-  <title>Archive: 2021 - 暂未成功人士</title>
+  <title>重绘和回流 - 暂未成功人士</title>
+  
+    <meta name="keywords" content="前端优化,浏览器,html/css">
   
 
   
@@ -104,7 +104,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -434,7 +434,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://p.pstatp.com/origin/1375b00017396c5bd8d25"></div>
           
@@ -524,191 +524,268 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/2021/02/27/async%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
-        <img class='headimg' src='https://images.unsplash.com/photo-1614186981972-8aff75a55306?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/27/async%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
-        async函数学习记录
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一. Generator函数Generator函数从语法上可以理解成一个状态机，它的内部封装了多个状态。当执行Generator函数时候会返回一个遍历器对象，返回的遍历器对象可以一次遍历Generator函数内部的每一个状态。
-形式上，Generator函数只是一个普通函数。
-1234567function* testGenerator() &#123;  yield &#x27;I am&...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/ES6/">ES6</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/27/async%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
   
     <div class='headimg-div'>
-      <a class='headimg-a' href="/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/">
+      <a class='headimg-a'>
         <img class='headimg' src='https://images.unsplash.com/photo-1537563626051-5a6859a8d099?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'/>
       </a>
     </div>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title" >
-      <a href="/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/">
+    
+    
+      <h1 class="title">
         重绘和回流
-      </a>
-    </h2>
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>暂未成功人士</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/html-css/">html/css</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Feb 26, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="重绘和回流" data-path="/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
   
-  <div class='md'>
+  
+  <h2 id="一-重绘和回流的概念"><a href="#一-重绘和回流的概念" class="headerlink" title="一. 重绘和回流的概念"></a><strong>一. 重绘和回流的概念</strong></h2><p>&emsp;&emsp;重绘（repaint）：从名字来看，重绘 = 重新绘制（绘画 + 上色） 。当盒子的位置、大小以及其他属性，例如颜色、字体大小等都确定下来之后，浏览器便把这些原色都按照各自的特性<code>绘制一遍</code>，将内容呈现在页面上。而重绘是指一个元素<code>外观改变</code>所触发的浏览器行为，浏览器会根据元素的新属性重新绘制，使元素呈现新的外观。</p>
+<p>&emsp;&emsp;<font color="orange">触发重绘的条件：元的外观属性改变，如:  color，background-color等。</font></p>
+<p>&emsp;&emsp;回流（重排/重构/reflow）：取其中最容易理解的重构来说，重构 = 重新构建。当渲染树中的一部分（或全部）因为元素的<code>规模尺寸、布局、隐藏</code>等属性改变而需要重新构建的时候，这就称为回流。</p>
+<p>&emsp;&emsp;<font color="orange">每个页面至少需要一次回流，那就是在页面第一次加载的时候</font></p>
+<p>&emsp;&emsp;<font color="orange">触发回流的条件:<br/>&emsp;&emsp;1、页面渲染初始化（无法避免）；<br/>&emsp;&emsp;2、添加或删除可见的DOM元素；<br/>&emsp;&emsp;3、元素位置的改变，或者使用动画；<br/>&emsp;&emsp;4、元素尺寸的改变——大小，外边距，边框；<br/>&emsp;&emsp;5、浏览器窗口尺寸的变化（resize事件发生时）；<br/>&emsp;&emsp;6、填充内容的改变，比如文本的改变或图片大小改变而引起的计算值宽度和高度的改变；<br/>&emsp;&emsp;7、读取某些元素属性：（offsetLeft/Top/Height/Width,　clientTop/Left/Width/Height,　scrollTop/Left/Width/Height,　width/height,　getComputedStyle(),　currentStyle(IE)　)</font></p>
+<h2 id="二-重绘和回流的关系"><a href="#二-重绘和回流的关系" class="headerlink" title="二. 重绘和回流的关系"></a><strong>二. 重绘和回流的关系</strong></h2><p>&emsp;&emsp;在回流的时候，浏览器会使渲染树中收到影响的部分失效，并重新构建这部分渲染树。完成回流后，浏览器会重新绘制所受影响的部分到页面中，该过程称为重绘。<font color="orange">所以，回流必定引发重绘，但是重绘不一定会引发回流</font>。</p>
+<center><font color="red"><b>重绘回流的代价：耗时，导致浏览器卡慢!!!</b></font></center>
+
+<h2 id="三-重绘回流操作的优化方案"><a href="#三-重绘回流操作的优化方案" class="headerlink" title="三. 重绘回流操作的优化方案"></a><strong>三. 重绘回流操作的优化方案</strong></h2><h3 id="3-1-最小化重绘和回流"><a href="#3-1-最小化重绘和回流" class="headerlink" title="3.1 最小化重绘和回流"></a>3.1 最小化重绘和回流</h3><p>&emsp;&emsp;由于重绘和回流操作的代价昂贵，因此最直接的优化方法就说减少重绘和回流的发生次数。我们可以合并对此对DOM或样式的修改，然后进行一次处理。</p>
+<p>&emsp;&emsp;例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> el = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;editStyle&#x27;</span>);</span><br><span class="line">el.style.padding = <span class="string">&#x27;5px&#x27;</span>;</span><br><span class="line">el.style.width = <span class="string">&#x27;10px&#x27;</span>;</span><br><span class="line">el.style.height = <span class="string">&#x27;20px&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在上述代码中，又多个样式属性被修改，这些属性都会影响元素的<code>几何结构变化</code>，所以它们都会引发<code>回流</code>，在旧版本浏览器中上述代码会引发三次回流。为了减少回流，我们可以采取合并修改的方式:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> el = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;editStyle&#x27;</span>);</span><br><span class="line">el.style.cssText += <span class="string">&#x27;padding: 5px; width:10px; height:20px&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.edit</span>&#123;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> el = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;editStyle&#x27;</span>);</span><br><span class="line">el.className += <span class="string">&#x27;edit&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-通过display属性设置"><a href="#3-2-通过display属性设置" class="headerlink" title="3.2 通过display属性设置"></a><strong>3.2 通过display属性设置</strong></h3><p>&emsp;&emsp;在对元素样式进行修改的时候，我们可以先设置元素的<code>display</code>属性为<code>none</code>（这是因为隐藏元素进行操作的时候是不会引起重绘和回流的），然后进行页面布局或样式修改等操作。当这些操作完成后，再将元素<code>display</code>属性设置为<code>block</code>,通过修改display属性只引发两次重绘和回流。</p>
+<h3 id="3-3-通过position属性设置"><a href="#3-3-通过position属性设置" class="headerlink" title="3.3 通过position属性设置"></a><strong>3.3 通过position属性设置</strong></h3><p>&emsp;&emsp;将需要多次回流的元素的<code>postion</code>属性设置<code>为absolute</code>或者<code>fixed</code>，这样会使元素脱离文档流，这时候它的变化不会影响到其它元素。</p>
+<p>&emsp;&emsp;<font color="orange">注：脱离文档流指的是元素脱离正常元素的布局排版工会则，其他处于文档流中的元素再计算布局排版的时候，会自动无视已经脱离文档流的元素进行定位。</font></p>
+<p>&emsp;&emsp;<font color="orange">浮动与absolute/fixed的区别就在于，浮动会使元素脱离文档流，但不会脱离文本流，在与其他元素的文本内容计算布局的时候，还是占位置的；absolute/fixed既脱离文档流也脱离文本流。</font></p>
+<h3 id="3-4-cloneNode-和-replaceChild"><a href="#3-4-cloneNode-和-replaceChild" class="headerlink" title="3.4 cloneNode 和 replaceChild"></a><strong>3.4 cloneNode 和 replaceChild</strong></h3><p>&emsp;&emsp;通过使用cloneNode和replaceChild技术，只引发一次重绘和回流。</p>
+<p>cloneNode使用:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cloneNode创建一个test节点的拷贝</span></span><br><span class="line"><span class="comment">// cloneNode(true)时递归赋值test节点的所有子孙节点</span></span><br><span class="line"><span class="comment">// cloneNode(false)时只赋值当前节点</span></span><br><span class="line"><span class="keyword">var</span> node=<span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>).lastChild.cloneNode(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 省略了对赋值节点属性的操作</span></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加赋值的node节点作为oldNode节点的子节点</span></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">&quot;oldNode&quot;</span>).appendChild(node);</span><br></pre></td></tr></table></figure>
+
+<p>replaceChild使用:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 省略了对newNode节点属性的操作</span></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将test的子节点替换为一个新的节点</span></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">&quot;test&quot;</span>).replaceChild(newnode,oldnode);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-createDocumentFragment"><a href="#3-5-createDocumentFragment" class="headerlink" title="3.5 createDocumentFragment"></a><strong>3.5 createDocumentFragment</strong></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// createDocumentFragment()方法创建了一个虚拟的节点对象，节点对象包含所有的属性和方法。</span></span><br><span class="line"><span class="keyword">var</span> d=<span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对创建的虚拟节点进行操作</span></span><br><span class="line"><span class="comment">// 如果使用appendChid方法将原dom树中的节点添加到DocumentFragment中时，会删除原来的节点。 </span></span><br><span class="line">d.appendChild(<span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;LI&quot;</span>)[<span class="number">0</span>]);</span><br><span class="line">d.childNodes[<span class="number">0</span>].childNodes[<span class="number">0</span>].nodeValue=<span class="string">&quot;Milk&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当请求把一个DocumentFragment节点插入文档树时，插入的不是DocumentFragment自身，而是它的所有子孙节点，即插入的是括号里的节点。这个特性使得DocumentFragment成了占位符，暂时存放那些一次插入文档的节点。</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;UL&quot;</span>)[<span class="number">0</span>].appendChild(d);</span><br></pre></td></tr></table></figure>
+
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>如有错误，感谢指正</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://hz-code.github.io/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/>https://hz-code.github.io/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-27T17:14:59+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Feb 27, 2021</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>前端优化</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>浏览器</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/html-css/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>html/css</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        一. 重绘和回流的概念&emsp;&emsp;重绘（repaint）：从名字来看，重绘 = 重新绘制（绘画 + 上色） 。当盒子的位置、大小以及其他属性，例如颜色、字体大小等都确定下来之后，浏览器便把这些原色都按照各自的特性绘制一遍，将内容呈现在页面上。而重绘是指一个元素外观改变所触发的浏览器行为，浏览器会根据元素的新属性重新绘制，使元素呈现新的外观。
-&emsp;&emsp;触发重绘的条件...
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hz-code.github.io/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/&title=重绘和回流 - 暂未成功人士&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hz-code.github.io/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/&title=重绘和回流 - 暂未成功人士&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hz-code.github.io/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/&title=重绘和回流 - 暂未成功人士&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAFYCAAAAAAzB7ucAAAEZ0lEQVR42u3aQXLjMAwEQP//07v33XKZGICQk2rerEgU1cyBmMLrj3FlvBCABWuABQvWALsC+wrHfxMWr7+779/7P7339D3v5v20jqoHWLBgwYIFCxYs2F3Y4wNw+IHdDTt9b/cfousBFixYsGDBggUL9hnYjwfg4v3pwbu6nur16u/j+cCCBQsWLFiwYMH+KNg0UI4P4k1QsGDBggULFixYsGCTgDqFqm5IWsiABQsWLFiwYMGC/Vmw3YN6GmhvBe+njR+Pd8KABQsWLFiwYMGCPYLtNlT8tt+xB1iwYMGCBQsWLNgV2O7oBs/VgPp0njSAb3uABQsWLFiwYMGCXYFND8ifFnxaWFQ/9HS+qY2srhMsWLBgwYIFCxbsDmwXpnrwPv17t/GiWiiMBflgwYIFCxYsWLBgV2BPF9wNnKuFSBpQp/NWC5e318GCBQsWLFiwYMGuwlYP4K9wpB9Wfb4b5KcFCliwYMGCBQsWLNhnYKsH5mrgPFUQnM7Tvb8cjIMFCxYsWLBgwYJdgd0KsqsfUG30SIP1qUIJLFiwYMGCBQsW7HfApsF1FaLb2FHd0DQwLzdsgAULFixYsGDBgr0Kewo11biRFgJpQN5tRCl7gAULFixYsGDBgl2BTRsVuoF22kgxFZB/en6sYQMsWLBgwYIFCxbsVdj0w7Y3Im2wuFVggAULFixYsGDBgn0WdupAf/rcdKPEFHz7OliwYMGCBQsWLNivhD2FTgPmtGDpFijdBhKwYMGCBQsWLFiwu7BpAHy6IVMFQDeIvzXv2wIBLFiwYMGCBQsW7KOw1QN6FTx9b/egP93YARYsWLBgwYIFC3YXNi0Aqg0YTxcGtxqV3xYIYMGCBQsWLFiwYB+B7UK0F3jpuXTe40IILFiwYMGCBQsW7ApsWhCcFgLVA3jaEFItVNLGko/PgQULFixYsGDBgl2B7QbeW89PB9ZpgfPxfrBgwYIFCxYsWLArsOlE1cKiG2jfCsrT9729DhYsWLBgwYIFC3YFdrpRor2wpUaLW40dYMGCBQsWLFiwYHdgpwLjtLFjqkBIGzbSggMsWLBgwYIFCxbsd8Gm4LcaL6rgXeDT7y43bIAFCxYsWLBgwYJdgZ1a2FQjxVTDxhR0uRMGLFiwYMGCBQsW7FXY6gdMB9IpTNpo0S0QwIIFCxYsWLBgwX4HbDWo7gbbaUNId6O6jShgwYIFCxYsWLBgn4XtjrSQuF0IdDc6LnjAggULFixYsGDBrsBOHZBvBdJThUW1YKjeBxYsWLBgwYIFC/YZ2LQgqL44nScNwNNgfKxAAAsWLFiwYMGCBbsC2z3oP/5h1QN9t0EDLFiwYMGCBQsW7I+GrTZgpA0bt++vbthx0A0WLFiwYMGCBQv2K2GvLXR4g9ICASxYsGDBggULFux3w1YbNtINqs7bBesG6cfBOViwYMGCBQsWLNhV2PSA3F3YKUA3WO8WCsfzgAULFixYsGDBgl2BNWYHWLBgDbBgwRpgr46/WGkbL/j2gusAAAAASUVORK5CYII=">
+          </div>
+        </div>
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-26</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/html-css/">html/css</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
+
+
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/2021/02/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
-        <img class='headimg' src='https://images.unsplash.com/photo-1537819191377-d3305ffddce4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1308&q=80'/>
-      </a>
     </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
-        深入理解浏览器运行机制
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一. 进程和线程​        计算机的核心是CPU，它承担了所有的计算任务。我们假设CPU是一个时刻在运行的工厂，假设工厂的电力有限（CPU的计算能力有限），一次只能供给一个车间（单个CPU一次只能运行一个任务）。
-​        进程就像工厂的车间，它代表CPU所能处理的单个任务。任一时刻，CPU总是运行一个进程，同时其他进程处于非运行状态;
-​        而线程是工厂车间中的工...
-      
-    
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-25</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2021/02/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/'>
-            Read More
-          </a>
-        </div>
+        <a class='prev' href='/2021/02/27/async%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>async函数学习记录</p>
+          <p class='content'>一. Generator函数Generator函数从语法上可以理解成一个状态机，它的内部封装了多个状态。当执行Generator函数时候会返回一个遍历器对象，返回的遍历器对象可以一次遍历Gene...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/02/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/'>
+          <p class='title'>深入理解浏览器运行机制<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>一. 进程和线程​        计算机的核心是CPU，它承担了所有的计算任务。我们假设CPU是一个时刻在运行的工厂，假设工厂的电力有限（CPU的计算能力有限），一次只能供给一个车间（单个CPU...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="minivaline_container">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -769,6 +846,29 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
   </div>
 </section>
+
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">一. 重绘和回流的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">二. 重绘和回流的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E9%87%8D%E7%BB%98%E5%9B%9E%E6%B5%81%E6%93%8D%E4%BD%9C%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88"><span class="toc-text">三. 重绘回流操作的优化方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%9C%80%E5%B0%8F%E5%8C%96%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81"><span class="toc-text">3.1 最小化重绘和回流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E9%80%9A%E8%BF%87display%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE"><span class="toc-text">3.2 通过display属性设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E9%80%9A%E8%BF%87position%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE"><span class="toc-text">3.3 通过position属性设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-cloneNode-%E5%92%8C-replaceChild"><span class="toc-text">3.4 cloneNode 和 replaceChild</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-createDocumentFragment"><span class="toc-text">3.5 createDocumentFragment</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
 
   
 
@@ -960,27 +1060,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
 		  
 		  <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="重绘和回流";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>

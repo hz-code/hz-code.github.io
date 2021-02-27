@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -24,7 +22,9 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- 页面元数据 -->
   
-  <title>Archive: 2021 - 暂未成功人士</title>
+  <title>深入理解浏览器运行机制 - 暂未成功人士</title>
+  
+    <meta name="keywords" content="前端优化,浏览器">
   
 
   
@@ -104,7 +104,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -434,7 +434,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://p.pstatp.com/origin/1375b00017396c5bd8d25"></div>
           
@@ -524,191 +524,257 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-  
+
+
   
     <div class='headimg-div'>
-      <a class='headimg-a' href="/2021/02/27/async%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
-        <img class='headimg' src='https://images.unsplash.com/photo-1614186981972-8aff75a55306?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/27/async%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
-        async函数学习记录
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一. Generator函数Generator函数从语法上可以理解成一个状态机，它的内部封装了多个状态。当执行Generator函数时候会返回一个遍历器对象，返回的遍历器对象可以一次遍历Generator函数内部的每一个状态。
-形式上，Generator函数只是一个普通函数。
-1234567function* testGenerator() &#123;  yield &#x27;I am&...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/ES6/">ES6</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/27/async%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/">
-        <img class='headimg' src='https://images.unsplash.com/photo-1537563626051-5a6859a8d099?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/">
-        重绘和回流
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一. 重绘和回流的概念&emsp;&emsp;重绘（repaint）：从名字来看，重绘 = 重新绘制（绘画 + 上色） 。当盒子的位置、大小以及其他属性，例如颜色、字体大小等都确定下来之后，浏览器便把这些原色都按照各自的特性绘制一遍，将内容呈现在页面上。而重绘是指一个元素外观改变所触发的浏览器行为，浏览器会根据元素的新属性重新绘制，使元素呈现新的外观。
-&emsp;&emsp;触发重绘的条件...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-26</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a><span class="sep"></span><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/html-css/">html/css</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/2021/02/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
+      <a class='headimg-a'>
         <img class='headimg' src='https://images.unsplash.com/photo-1537819191377-d3305ffddce4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1308&q=80'/>
       </a>
     </div>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title" >
-      <a href="/2021/02/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
+    
+    
+      <h1 class="title">
         深入理解浏览器运行机制
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一. 进程和线程​        计算机的核心是CPU，它承担了所有的计算任务。我们假设CPU是一个时刻在运行的工厂，假设工厂的电力有限（CPU的计算能力有限），一次只能供给一个车间（单个CPU一次只能运行一个任务）。
-​        进程就像工厂的车间，它代表CPU所能处理的单个任务。任一时刻，CPU总是运行一个进程，同时其他进程处于非运行状态;
-​        而线程是工厂车间中的工...
-      
-    
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>暂未成功人士</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+
+
+          
         
-        <time>2021-02-25</time>
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Feb 25, 2021</p>
+  </a>
+</div>
+
+          
         
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="深入理解浏览器运行机制" data-path="/2021/02/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  
+  <h2 id="一-进程和线程"><a href="#一-进程和线程" class="headerlink" title="一. 进程和线程"></a>一. 进程和线程</h2><p>​        计算机的核心是CPU，它承担了所有的计算任务。我们假设CPU是一个时刻在运行的工厂，假设工厂的电力有限（CPU的计算能力有限），一次只能供给一个车间（单个CPU一次只能运行一个任务）。</p>
+<p>​        进程就像工厂的车间，它代表CPU所能处理的单个任务。任一时刻，CPU总是运行一个进程，同时其他进程处于非运行状态;</p>
+<p>​        而线程是工厂车间中的工人，可能只有一个，也可能有很多个，他们协同完成工作。车间的空间是工人们共享的，这意味着一个进程下的线程共享该进程的内存空间。</p>
+<hr>
+<p><font color="red">注:<br>&emsp;&emsp;一个软件不等于一个进程，一个软件可能包含有多个户向独立的进程；<br/><br>&emsp;&emsp;进程是系统资源分配的最小单位(即系统以进程为最小单位分配内存空间，同时进程是能独立运行的最小单位）；<br/><br>&emsp;&emsp;线程是系统调度的最小单位（即系统以进程为单位分配CPUT中的核）；<br/><br>&emsp;&emsp;进程之间也能相互通信，但代价较大。</font></p>
+<h2 id="二-浏览器中的进程"><a href="#二-浏览器中的进程" class="headerlink" title="二. 浏览器中的进程"></a>二. 浏览器中的进程</h2><p><img src="/img/1.png" class="lazyload" data-srcset="/img/1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<h3 id="2-1-浏览器主进程（Browser进程）"><a href="#2-1-浏览器主进程（Browser进程）" class="headerlink" title="2.1 浏览器主进程（Browser进程）"></a><strong>2.1 浏览器主进程（Browser进程）</strong></h3><p>&emsp;&emsp;浏览器的主进程只有一个，负责协调、主控。</p>
+<ul>
+<li>&emsp;负责浏览器界面显示，与用户交互，如前进，后退等；</li>
+<li>&emsp;负责各个页面的管理，创建和销毁其他进程；</li>
+<li>&emsp;负责将渲染进程得到的内存中的 Bitmap，绘制到用户界面上；</li>
+<li>&emsp;负责网络资源的管理，下载等。</li>
+</ul>
+<h3 id="2-2-第三方插件进程"><a href="#2-2-第三方插件进程" class="headerlink" title="2.2 第三方插件进程"></a><strong>2.2 第三方插件进程</strong></h3><p>&emsp;&emsp;每种类型的插件对应一个进程，仅当使用该插件时才创建。</p>
+<h3 id="2-3-GPU进程"><a href="#2-3-GPU进程" class="headerlink" title="2.3 GPU进程"></a><strong>2.3 GPU进程</strong></h3><p>&emsp;&emsp;只有一个，负责3D绘制，只有当该页面使用了硬件加速才会使用它，来渲染（显示）页面。否则的话，不使用这个进程，而是用Browser进程来渲染（显示）页面。</p>
+<h3 id="2-4-浏览器渲染进程（又称浏览器内核，Renderer-进程，内部是多线程的）"><a href="#2-4-浏览器渲染进程（又称浏览器内核，Renderer-进程，内部是多线程的）" class="headerlink" title="2.4 浏览器渲染进程（又称浏览器内核，Renderer 进程，内部是多线程的）"></a><strong>2.4 浏览器渲染进程（又称浏览器内核，Renderer 进程，内部是多线程的）</strong></h3><p>&emsp;&emsp;负责脚本执行，位图绘制，事件触发，任务队列轮询等 。</p>
+<h4 id="2-4-1-GUI-渲染线程"><a href="#2-4-1-GUI-渲染线程" class="headerlink" title="2.4.1 GUI 渲染线程"></a><strong>2.4.1 GUI 渲染线程</strong></h4><p>&emsp;&emsp;负责渲染浏览器界面，解析 HTML，CSS，构建 DOM 树和 RenderObject 树，布局和绘制等。当界面需要重绘（Repaint）或由于某种操作引发回流(reflow)时，该线程就会执行<br>&emsp;&emsp;<font color="red">注：GUI 渲染线程与 JS 引擎线程是互斥的，当 JS 引擎执行时 GUI 线程会被挂起（相当于被冻结了），GUI 更新会被保存在一个队列中等到 JS 引擎空闲时立即被执行。为什么互斥：由于 JS 是可以操作 DOM 的，如果同时修改元素属性并同时渲染界面(即 JS 线程和 UI 线程同时运行)， 那么渲染线程前后获得的元素就可能不一致了（简单说就是 js 修改 dom 后没有重新渲染成功）</font></p>
+<h4 id="2-4-2-JS-引擎线程"><a href="#2-4-2-JS-引擎线程" class="headerlink" title="2.4.2 JS 引擎线程"></a><strong>2.4.2 JS 引擎线程</strong></h4><p>&emsp;&emsp;也称为 JS 内核，负责处理 Javascript 脚本程序。JS 引擎线程负责解析 Javascript 脚本，运行代码。JS 引擎一直等待着任务队列中任务的到来，然后加以处理，一个 Tab 页（renderer 进程）中无论什么时候都只有一个 JS 线程在运行 JS 程序<br>&emsp;&emsp;<font color="red">注： GUI 渲染线程与 JS 引擎线程是互斥的，所以如果 JS 执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞。</font></p>
+<h4 id="2-4-3-事件触发线程"><a href="#2-4-3-事件触发线程" class="headerlink" title="2.4.3 事件触发线程"></a><strong>2.4.3 事件触发线程</strong></h4><p>&emsp;&emsp;归属于浏览器而不是 JS 引擎，用来控制事件循环（可以理解，JS 引擎自己都忙不过来，需要浏览器另开线程协助）。当 JS 引擎执行代码块如 setTimeOut 时（也可来自浏览器内核的其他线程,如鼠标点击、AJAX 异步请求等），会将对应任务添加到事件线程中，当对应的事件符合触发条件被触发时，该线程会把事件添加到待处理队列的队尾，等待 JS 引擎的处理。<br>&emsp;&emsp;<font color="red">注：由于 JS 的单线程关系，所以这些待处理队列中的事件都得排队等待 JS 引擎处理（当 JS 引擎空闲时才会去执行）。</font></p>
+<h4 id="2-4-4-定时触发器线程"><a href="#2-4-4-定时触发器线程" class="headerlink" title="2.4.4 定时触发器线程"></a><strong>2.4.4 定时触发器线程</strong></h4><p>&emsp;&emsp;setInterval 与 setTimeout(这些 API 却不是引擎提供的而是浏览器提供的 Web API，比如说 DOM、AJAX、setTimeout) 所在线程浏览器定时计数器并不是由JavaScript 引擎计数的，因为 JavaScript 引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确。因此通过单独线程来计时并触发定时（计时完毕后，添加到事件队列中，等待 JS 引擎空闲后执行）。<br>&emsp;&emsp;<font color="red">注：W3C 在 HTML 标准中规定，规定要求 setTimeout 中低于 4ms 的时间间隔算为 4ms。</font></p>
+<h4 id="2-4-5-异步-http-请求线程"><a href="#2-4-5-异步-http-请求线程" class="headerlink" title="2.4.5 异步 http 请求线程"></a><strong>2.4.5 异步 http 请求线程</strong></h4><p>&emsp;&emsp;在 XMLHttpRequest 在连接后是通过浏览器新开一个线程请求。当检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件，将这个回调再放入事件队列中，再由 JavaScript 引擎执行。</p>
+<h2 id="三-浏览器的运行机制"><a href="#三-浏览器的运行机制" class="headerlink" title="三. 浏览器的运行机制"></a><strong>三. 浏览器的运行机制</strong></h2><ol>
+<li>构建DOM树（parse）：渲染引擎解析HTML文档，首先将标签转换成DOM树中的DOM node（包括js生成的标签）<strong>生成内容树</strong>（Content Tree/DOM Tree）；</li>
+<li>构建渲染树（construct）：解析对应的CSS样式文件信息（包括js生成的样式和外部css文件），而这些文件信息以及HTML中可见的指令（如<b></b>）<strong>，构建渲染树</strong>（Rendering Tree/Frame Tree）；render tree中每个NODE都有自己的style，而且render tree不包含隐藏的节点(比如display:none的节点，还有head节点)，因为这些节点不会用于呈现</li>
+<li>布局渲染树（reflow/layout）：从根节点递归调用，计算每一个元素的大小、位置等，给出每个节点所应该在屏幕上出现的精确坐标；</li>
+<li>绘制渲染树（paint/repaint）：遍历渲染树，使用UI 层来绘制每个节点。</li>
+</ol>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/02/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>如有错误，感谢指正</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://hz-code.github.io/2021/02/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/>https://hz-code.github.io/2021/02/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-27T17:15:15+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Feb 27, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
-    
-  </section>
+        
+          
   
-    
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>前端优化</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>浏览器</p></a></div>
 
 
-	
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hz-code.github.io/2021/02/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/&title=深入理解浏览器运行机制 - 暂未成功人士&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hz-code.github.io/2021/02/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/&title=深入理解浏览器运行机制 - 暂未成功人士&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hz-code.github.io/2021/02/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/&title=深入理解浏览器运行机制 - 暂未成功人士&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a>
+          <div class='target'>
+            <img src="data:image/png;base64,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">
+          </div>
+        </div>
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/02/26/%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>重绘和回流</p>
+          <p class='content'>一. 重绘和回流的概念&emsp;&emsp;重绘（repaint）：从名字来看，重绘 = 重新绘制（绘画 + 上色） 。当盒子的位置、大小以及其他属性，例如颜色、字体大小等都确定下来之后，浏览...</p>
+        </a>
+      
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="minivaline_container">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -769,6 +835,29 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
   </div>
 </section>
+
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B"><span class="toc-text">一. 进程和线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B"><span class="toc-text">二. 浏览器中的进程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%BB%E8%BF%9B%E7%A8%8B%EF%BC%88Browser%E8%BF%9B%E7%A8%8B%EF%BC%89"><span class="toc-text">2.1 浏览器主进程（Browser进程）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8F%92%E4%BB%B6%E8%BF%9B%E7%A8%8B"><span class="toc-text">2.2 第三方插件进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-GPU%E8%BF%9B%E7%A8%8B"><span class="toc-text">2.3 GPU进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%EF%BC%88%E5%8F%88%E7%A7%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%EF%BC%8CRenderer-%E8%BF%9B%E7%A8%8B%EF%BC%8C%E5%86%85%E9%83%A8%E6%98%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%EF%BC%89"><span class="toc-text">2.4 浏览器渲染进程（又称浏览器内核，Renderer 进程，内部是多线程的）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-GUI-%E6%B8%B2%E6%9F%93%E7%BA%BF%E7%A8%8B"><span class="toc-text">2.4.1 GUI 渲染线程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-JS-%E5%BC%95%E6%93%8E%E7%BA%BF%E7%A8%8B"><span class="toc-text">2.4.2 JS 引擎线程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-3-%E4%BA%8B%E4%BB%B6%E8%A7%A6%E5%8F%91%E7%BA%BF%E7%A8%8B"><span class="toc-text">2.4.3 事件触发线程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-4-%E5%AE%9A%E6%97%B6%E8%A7%A6%E5%8F%91%E5%99%A8%E7%BA%BF%E7%A8%8B"><span class="toc-text">2.4.4 定时触发器线程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-5-%E5%BC%82%E6%AD%A5-http-%E8%AF%B7%E6%B1%82%E7%BA%BF%E7%A8%8B"><span class="toc-text">2.4.5 异步 http 请求线程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="toc-text">三. 浏览器的运行机制</span></a></li></ol>
+    </div>
+  </section>
+
 
   
 
@@ -960,27 +1049,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
 		  
 		  <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="深入理解浏览器运行机制";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>
