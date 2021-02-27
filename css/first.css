@@ -775,7 +775,6 @@ a.result.search-result-fix,
 }
 .cover-wrapper.search .bottom .menu {
   margin-top: 16px;
-  z-index:2;
 }
 .cover-wrapper.search .bottom .menu .list-h a {
   white-space: nowrap;
@@ -804,6 +803,7 @@ a.result.search-result-fix,
 .cover-wrapper.featured .menu,
 .cover-wrapper.focus .menu {
   border-radius: 6px;
+  z-index:2;
 }
 .cover-wrapper.dock .menu .list-h a,
 .cover-wrapper.featured .menu .list-h a,
