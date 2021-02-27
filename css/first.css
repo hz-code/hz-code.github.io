@@ -547,7 +547,7 @@ a.result.search-result-fix,
   }
 }
 .cover-wrapper .cover-body {
-  z-index: 1;
+  z-index: -1;
   position: relative;
   width: 100%;
   height: 100%;
@@ -803,7 +803,6 @@ a.result.search-result-fix,
 .cover-wrapper.featured .menu,
 .cover-wrapper.focus .menu {
   border-radius: 6px;
-  z-index:2;
 }
 .cover-wrapper.dock .menu .list-h a,
 .cover-wrapper.featured .menu .list-h a,
